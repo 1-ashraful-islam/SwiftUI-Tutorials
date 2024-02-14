@@ -20,3 +20,9 @@ This is built following a SwiftUI essentials tutorial project from [Apple Develo
   - Interfacing with UIKit
   - Creating a watchOS app
   - Creating a macOS app
+
+## Demo Video
+
+Click on the image below to watch a quick demo video of the app in YouTube.
+
+[![Watch the video](https://img.youtube.com/vi/EQKEjfmtYaM/0.jpg)](https://www.youtube.com/watch?v=EQKEjfmtYaM "Watch the video")
