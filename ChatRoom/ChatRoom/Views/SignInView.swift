@@ -11,15 +11,16 @@ struct SignInView: View {
     
     func loginButton(_ text: String) -> some View {
         Text(text)
-            .font(.title2)
+            .font(.title2.bold())
             .padding()
+            .frame(width: 300)
             .foregroundStyle(.black)
+            .background(.white)
+            .clipShape(.rect(cornerRadius: 20))
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke()
                     .foregroundStyle(.black)
-                    .frame(width: 300)
-                    
             )
     }
     
