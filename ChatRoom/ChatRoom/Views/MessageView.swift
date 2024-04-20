@@ -10,7 +10,7 @@ import SwiftUI
 struct MessageView: View {
     var message: Message
     var isFromCurrentUser: Bool = false
-    
+
     var userAvatar: some View {
         Image(systemName: "person")
             .resizable()
@@ -18,7 +18,7 @@ struct MessageView: View {
             .frame(maxHeight: 32)
             .padding(.vertical, 16)
     }
-    
+
     func userMessage(_ text: String, _ color: Color) -> some View {
         HStack {
             Text(text)
@@ -28,10 +28,10 @@ struct MessageView: View {
         .background(color)
         .clipShape(.rect(cornerRadius: 20))
     }
-    
+
     var body: some View {
         if isFromCurrentUser {
-            HStack (alignment: .top) {
+            HStack(alignment: .top) {
                 Spacer()
                 userMessage(message.text, .blue.opacity(0.6))
                 userAvatar
@@ -39,7 +39,7 @@ struct MessageView: View {
             }
             .padding(.horizontal, 8)
         } else {
-            HStack (alignment: .top) {
+            HStack(alignment: .top) {
                 userAvatar
                     .padding(.trailing, 4)
                 userMessage(message.text, .gray.opacity(0.3))
@@ -52,7 +52,15 @@ struct MessageView: View {
 
 #Preview {
     Group {
-        MessageView(message: .init(createdAt: .init(), userID: .init(), text: "A message sample A message sample A message sample\n\n\n A sample", photoURL: ""))
-        MessageView(message: .init(createdAt: .init(), userID: .init(), text: "A message sample A message sample A message sample\n\n\n A sample", photoURL: ""), isFromCurrentUser: true)
+        MessageView(
+            message: .init(
+                createdAt: .init(), userID: .init(),
+                text: "A message sample A message sample A message sample\n\n\n A sample",
+                photoURL: ""))
+        MessageView(
+            message: .init(
+                createdAt: .init(), userID: .init(),
+                text: "A message sample A message sample A message sample\n\n\n A sample",
+                photoURL: ""), isFromCurrentUser: true)
     }
 }

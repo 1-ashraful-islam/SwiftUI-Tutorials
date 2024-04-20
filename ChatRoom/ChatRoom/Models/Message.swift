@@ -13,5 +13,5 @@ struct Message: Decodable, Identifiable {
     var userID: UUID
     var text: String
     var photoURL: String
-    
+
 }

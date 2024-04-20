@@ -10,7 +10,7 @@ import SwiftUI
 struct LandmarkSettings: View {
     @AppStorage("MapView.zoom")
     private var zoom: MapView.Zoom = .medium
-    
+
     var body: some View {
         Form {
             Picker("Map Zoom", selection: $zoom) {
@@ -19,7 +19,7 @@ struct LandmarkSettings: View {
                 }
             }
             .pickerStyle(.inline)
-            
+
         }
         .frame(width: 300)
         .navigationTitle("Landmark Settings")

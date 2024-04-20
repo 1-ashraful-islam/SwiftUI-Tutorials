@@ -35,6 +35,6 @@ struct GraphCapsule: View, Equatable {
         index: 0,
         color: .blue,
         height: 150,
-        range: 10..<50,
-        overallRange: 0..<100)
+        range: 10 ..< 50,
+        overallRange: 0 ..< 100)
 }

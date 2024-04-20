@@ -5,12 +5,12 @@
 //  Created by Ashraful Islam on 2/11/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Tab = .featured
-    
+
     enum Tab {
         case featured
         case list
@@ -23,14 +23,14 @@ struct ContentView: View {
                     Label("Featured", systemImage: "star")
                 }
                 .tag(Tab.featured)
-            
+
             LandmarkList()
                 .tabItem {
                     Label("List", systemImage: "list.bullet")
                 }
                 .tag(Tab.list)
         }
-        
+
     }
 }
 

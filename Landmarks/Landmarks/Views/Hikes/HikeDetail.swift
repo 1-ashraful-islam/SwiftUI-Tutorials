@@ -14,7 +14,7 @@ struct HikeDetail: View {
     var buttons = [
         ("Elevation", \Hike.Observation.elevation),
         ("Heart Rate", \Hike.Observation.heartRate),
-        ("Pace", \Hike.Observation.pace)
+        ("Pace", \Hike.Observation.pace),
     ]
 
     var body: some View {
@@ -29,9 +29,11 @@ struct HikeDetail: View {
                     } label: {
                         Text(value.0)
                             .font(.system(size: 15))
-                            .foregroundStyle(value.1 == dataToShow
-                                ? .gray
-                                : .accentColor)
+                            .foregroundStyle(
+                                value.1 == dataToShow
+                                    ? .gray
+                                    : .accentColor
+                            )
                             .animation(nil)
                     }
                 }

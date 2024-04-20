@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,8 @@
 		81603FD12BD1A8B400B47785 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 81603FD02BD1A8B400B47785 /* FirebaseFirestore */; };
 		81603FD32BD1A8B400B47785 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 81603FD22BD1A8B400B47785 /* FirebaseFirestoreSwift */; };
 		81603FD52BD1A8B400B47785 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81603FD42BD1A8B400B47785 /* FirebaseStorage */; };
+		81603FD82BD1B00800B47785 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FD72BD1B00800B47785 /* DatabaseManager.swift */; };
+		81603FDA2BD1B01700B47785 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FD92BD1B01700B47785 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		81603FC62BD0DCC700B47785 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		81603FC92BD0F3F800B47785 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		81603FCB2BD1A66600B47785 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		81603FD72BD1B00800B47785 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		81603FD92BD1B01700B47785 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +73,13 @@
 		81603FB02BD0D20900B47785 /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
-				81603FCB2BD1A66600B47785 /* GoogleService-Info.plist */,
+				81603FD62BD1AFC400B47785 /* Managers */,
 				81603FC82BD0DD2100B47785 /* Views */,
 				81603FC52BD0DCB100B47785 /* Models */,
 				81603FB12BD0D20900B47785 /* ChatRoomApp.swift */,
 				81603FB32BD0D20900B47785 /* ContentView.swift */,
 				81603FB72BD0D20A00B47785 /* Assets.xcassets */,
+				81603FCB2BD1A66600B47785 /* GoogleService-Info.plist */,
 				81603FB92BD0D20A00B47785 /* Preview Content */,
 			);
 			path = ChatRoom;
@@ -104,6 +109,15 @@
 				81603FC92BD0F3F800B47785 /* SignInView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		81603FD62BD1AFC400B47785 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				81603FD72BD1B00800B47785 /* DatabaseManager.swift */,
+				81603FD92BD1B01700B47785 /* AuthManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +162,7 @@
 				};
 			};
 			buildConfigurationList = 81603FA92BD0D20900B47785 /* Build configuration list for PBXProject "ChatRoom" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -187,11 +201,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81603FCA2BD0F3F800B47785 /* SignInView.swift in Sources */,
+				81603FDA2BD1B01700B47785 /* AuthManager.swift in Sources */,
 				81603FC22BD0D25700B47785 /* ChatView.swift in Sources */,
 				81603FB42BD0D20900B47785 /* ContentView.swift in Sources */,
 				81603FC72BD0DCC700B47785 /* Message.swift in Sources */,
 				81603FB22BD0D20900B47785 /* ChatRoomApp.swift in Sources */,
 				81603FC42BD0D26A00B47785 /* MessageView.swift in Sources */,
+				81603FD82BD1B00800B47785 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

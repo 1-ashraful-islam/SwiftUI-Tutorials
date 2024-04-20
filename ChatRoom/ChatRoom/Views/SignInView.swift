@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    
+
     func loginButton(_ text: String) -> some View {
         Text(text)
             .font(.title2.bold())
@@ -23,20 +23,20 @@ struct SignInView: View {
                     .foregroundStyle(.black)
             )
     }
-    
+
     var body: some View {
-        VStack (spacing: 20){
+        VStack(spacing: 20) {
             Image(systemName: "person.badge.key.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: 128)
-            VStack (spacing: 20) {
+            VStack(spacing: 20) {
                 Button {
                     print("Sign in with Apple")
                 } label: {
                     loginButton("Sign in with Apple")
                 }
-                
+
                 Button {
                     print("Sign in with Google")
                 } label: {
