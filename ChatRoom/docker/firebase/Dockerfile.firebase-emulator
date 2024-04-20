@@ -1,0 +1,24 @@
+# Use Node.js on Alpine as the base image
+FROM node:lts-alpine
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Install Python and Java and pre-cache emulator dependencies.
+RUN apk add --no-cache python3 py3-pip openjdk11-jre-headless bash && \
+  npm install -g firebase-tools && \
+  firebase setup:emulators:database && \
+  firebase setup:emulators:firestore && \
+  firebase setup:emulators:pubsub && \
+  firebase setup:emulators:storage && \
+  firebase setup:emulators:ui && \
+  rm -rf /var/cache/apk/*
+
+# Expose the necessary ports for the emulators
+EXPOSE 4000 8080 8085 9099 9199 5001 5000 9000 9299 9005
+
+# Set environment variables for Java options, might need to be adjusted for specific requirements
+ENV JAVA_TOOL_OPTIONS="-Xmx4g"
+
+# # Command to start the emulators when the container starts, using a project setup from firebase.json
+# CMD ["firebase", "emulators:start", "--config=firebase.json"]

@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  firebase-emulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.firebase-emulator
+    entrypoint: [
+        "firebase",
+        "emulators:start",
+        # "--only=auth,firestore,ui,storage",
+        "--import=./emulator-state",
+        "--export-on-exit=./emulator-state",
+      ]
+    # entrypoint: ["firebase", "login"]
+    stdin_open: true # corresponds to -i
+    tty: true # corresponds to -t
+    ports:
+      - "4000:4000" # Emulator Suite UI
+      - "8080:8080" # Cloud Firestore
+      - "8085:8085" # Pub/Sub
+      - "9099:9099" # Authentication
+      - "9199:9199" # Cloud Storage
+      - "5001:5001" # Cloud Functions
+      - "9000:9000" # Realtime Database
+      - "5000:5000" # Firebase Hosting
+      - "9299:9299" # Eventarc
+      - "9005:9005" # Firebase Login
+    volumes:
+      - .:/usr/src/app
+      - ./.cache:/root/.cache
+      - ./.config:/root/.config
+      - ./.firebase:/root/.firebase
+    environment:
+      - FIRESTORE_EMULATOR_HOST=0.0.0.0:8080
+      - FIREBASE_AUTH_EMULATOR_HOST=0.0.0.0:9099
+      - GCLOUD_PROJECT=${PROJECT_ID}
+      - FIREBASE_TOKEN=${FIREBASE_TOKEN}
