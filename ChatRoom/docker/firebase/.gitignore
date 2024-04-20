@@ -1,6 +1,6 @@
 #venvs
 venv/
-emulator-state/
+emulator-data/
 
 # Logs
 logs

@@ -8,8 +8,8 @@ services:
         "firebase",
         "emulators:start",
         # "--only=auth,firestore,ui,storage",
-        "--import=./emulator-state",
-        "--export-on-exit=./emulator-state",
+        "--import=./emulator-data",
+        "--export-on-exit",
       ]
     # entrypoint: ["firebase", "login"]
     stdin_open: true # corresponds to -i
