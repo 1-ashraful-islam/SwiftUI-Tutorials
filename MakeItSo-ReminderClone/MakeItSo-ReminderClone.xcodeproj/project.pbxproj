@@ -14,6 +14,7 @@
 		816040022BD49C7A00B47785 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816040012BD49C7900B47785 /* Reminder.swift */; };
 		81EEDA452BD4B05D00257C91 /* AddReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA442BD4B05D00257C91 /* AddReminderView.swift */; };
 		81EEDA4C2BD4CB1A00257C91 /* ReminderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA4B2BD4CB1A00257C91 /* ReminderListViewModel.swift */; };
+		81EEDA4E2BD4D27200257C91 /* ReminderListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		816040012BD49C7900B47785 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		81EEDA442BD4B05D00257C91 /* AddReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderView.swift; sourceTree = "<group>"; };
 		81EEDA4B2BD4CB1A00257C91 /* ReminderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListViewModel.swift; sourceTree = "<group>"; };
+		81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				81603FF32BD49BEB00B47785 /* ReminderList.swift */,
 				81EEDA442BD4B05D00257C91 /* AddReminderView.swift */,
+				81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				81603FF42BD49BEB00B47785 /* ReminderList.swift in Sources */,
 				81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */,
 				81EEDA4C2BD4CB1A00257C91 /* ReminderListViewModel.swift in Sources */,
+				81EEDA4E2BD4D27200257C91 /* ReminderListRowView.swift in Sources */,
 				81EEDA452BD4B05D00257C91 /* AddReminderView.swift in Sources */,
 				816040022BD49C7A00B47785 /* Reminder.swift in Sources */,
 			);
