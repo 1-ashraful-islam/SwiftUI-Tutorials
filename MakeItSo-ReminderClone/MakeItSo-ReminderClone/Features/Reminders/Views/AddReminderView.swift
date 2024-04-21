@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct AddReminderView: View {
-    
+
     enum FocusableField: Hashable {
         case title
     }
-    
+
     @FocusState
     private var focusedField: FocusableField?
-    
+
     @State private var reminder = Reminder(title: "")
 
     @Environment(\.dismiss) private var dismiss
@@ -49,7 +49,7 @@ struct AddReminderView: View {
         onCommit(reminder)
         dismiss()
     }
-    
+
     private func cancelDialog() {
         dismiss()
     }
