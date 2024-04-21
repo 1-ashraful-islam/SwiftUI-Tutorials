@@ -36,6 +36,7 @@ struct ReminderList: View {
                 viewModel.addReminder(reminder)
             }
         }
+        .tint(.red)
     }
 
     private func presentAddReminderView() {
