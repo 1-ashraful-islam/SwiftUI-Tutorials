@@ -5,7 +5,9 @@
 //  Created by Ashraful Islam on 4/20/24.
 //
 
+import FirebaseAuth
 import FirebaseCore
+import FirebaseFirestore
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -14,6 +16,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
+
+        // MARK: Firebase Emulator settings
+        let useEmulator = UserDefaults.standard.bool(forKey: "useEmulator")
+        if useEmulator {
+
+            print("Using Firebase Emulator")
+            //Configure firestore
+            let settings = Firestore.firestore().settings
+            settings.host = "localhost:8080"
+            settings.cacheSettings = MemoryCacheSettings()
+            settings.isSSLEnabled = false
+            Firestore.firestore().settings = settings
+
+            //Configure Auth
+            Auth.auth().useEmulator(withHost: "localhost", port: 9099)
+        }
 
         return true
     }
