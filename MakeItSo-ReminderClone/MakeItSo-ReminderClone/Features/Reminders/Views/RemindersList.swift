@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct ReminderList: View {
+struct RemindersList: View {
 
     @Environment(ReminderListViewModel.self) private var viewModel
     @State private var isAddReminderDialogPresented = false
@@ -17,7 +17,7 @@ struct ReminderList: View {
         @Bindable var viewModel = viewModel
 
         List($viewModel.reminders) { $reminder in
-            ReminderListRowView(reminder: $reminder)
+            RemindersListRowView(reminder: $reminder)
         }
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
@@ -47,7 +47,7 @@ struct ReminderList: View {
 
 #Preview {
     NavigationStack {
-        ReminderList()
+        RemindersList()
             .environment(ReminderListViewModel())
             .navigationTitle("Reminders")
     }

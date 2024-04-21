@@ -1,5 +1,5 @@
 //
-//  ReminderListRowView.swift
+//  RemindersListRowView.swift
 //  MakeItSo-ReminderClone
 //
 //  Created by Ashraful Islam on 4/20/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ReminderListRowView: View {
+struct RemindersListRowView: View {
     @Binding
     var reminder: Reminder
 
@@ -28,9 +28,9 @@ struct ReminderListRowView: View {
         var body: some View {
             NavigationStack {
                 List {
-                    ReminderListRowView(reminder: $reminder[0])
+                    RemindersListRowView(reminder: $reminder[0])
 
-                    ReminderListRowView(reminder: $reminder[1])
+                    RemindersListRowView(reminder: $reminder[1])
                 }
                 .listStyle(.plain)
                 .navigationTitle("Reminders")
