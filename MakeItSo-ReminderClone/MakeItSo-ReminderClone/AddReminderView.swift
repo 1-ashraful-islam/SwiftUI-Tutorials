@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct AddReminderView: View {
+    
+    enum FocusableField: Hashable {
+        case title
+    }
+    
+    @FocusState
+    private var focusedField: FocusableField?
+    
     @State private var reminder = Reminder(title: "")
 
     @Environment(\.dismiss) private var dismiss
@@ -18,17 +26,31 @@ struct AddReminderView: View {
         NavigationStack {
             Form {
                 TextField("Title", text: $reminder.title)
+                    .focused($focusedField, equals: .title)
             }
+            .navigationTitle("New Reminder")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: cancelDialog)
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", action: commit)
+                        .disabled(reminder.title.isEmpty)
                 }
+            }
+            .onAppear {
+                focusedField = .title
             }
         }
     }
 
     private func commit() {
         onCommit(reminder)
+        dismiss()
+    }
+    
+    private func cancelDialog() {
         dismiss()
     }
 }
