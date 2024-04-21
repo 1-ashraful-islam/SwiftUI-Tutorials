@@ -15,7 +15,7 @@ RUN apk add --no-cache python3 py3-pip openjdk11-jre-headless bash && \
   rm -rf /var/cache/apk/*
 
 # Expose the necessary ports for the emulators
-EXPOSE 4000 8080 8085 9099 9199 5001 5000 9000 9299 9005
+EXPOSE 4000 8080 8085 9099 9199 5001 5000 9000 9299 9005 9150
 
 # Set environment variables for Java options, might need to be adjusted for specific requirements
 ENV JAVA_TOOL_OPTIONS="-Xmx4g"

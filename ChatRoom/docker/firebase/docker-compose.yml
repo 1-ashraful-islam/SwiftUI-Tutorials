@@ -17,6 +17,7 @@ services:
     ports:
       - "4000:4000" # Emulator Suite UI
       - "8080:8080" # Cloud Firestore
+      - "9150:9150" # Cloud Firestore Websocket
       - "8085:8085" # Pub/Sub
       - "9099:9099" # Authentication
       - "9199:9199" # Cloud Storage
