@@ -39,6 +39,10 @@ class RemindersListViewModel: ObservableObject {
         }
     }
 
+    func deleteReminder(_ reminder: Reminder) {
+        remindersRepository.removeReminder(reminder)
+    }
+
     func setCompleted(_ reminder: Reminder, isCompleted: Bool) {
         var editedReminder = reminder
         editedReminder.isCompleted = isCompleted
