@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		812F4E582BD59B1F00C4FABE /* RemindersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */; };
+		812F4E5C2BD5AFB600C4FABE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 812F4E5B2BD5AFB600C4FABE /* GoogleService-Info.plist */; };
 		81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */; };
-		81603FF42BD49BEB00B47785 /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* ReminderList.swift */; };
+		81603FF42BD49BEB00B47785 /* RemindersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* RemindersList.swift */; };
 		81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FF72BD49BED00B47785 /* Assets.xcassets */; };
 		81603FFB2BD49BED00B47785 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FFA2BD49BED00B47785 /* Preview Assets.xcassets */; };
 		816040022BD49C7A00B47785 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816040012BD49C7900B47785 /* Reminder.swift */; };
 		81EEDA452BD4B05D00257C91 /* AddReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA442BD4B05D00257C91 /* AddReminderView.swift */; };
 		81EEDA4C2BD4CB1A00257C91 /* ReminderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA4B2BD4CB1A00257C91 /* ReminderListViewModel.swift */; };
-		81EEDA4E2BD4D27200257C91 /* ReminderListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */; };
+		81EEDA4E2BD4D27200257C91 /* RemindersListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA4D2BD4D27200257C91 /* RemindersListRowView.swift */; };
 		81EEDA512BD4D7A300257C91 /* ReminderToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEDA502BD4D7A300257C91 /* ReminderToggleStyle.swift */; };
-		81EEDA532BD574BF00257C91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81EEDA522BD574BF00257C91 /* GoogleService-Info.plist */; };
 		81EEDA562BD5775D00257C91 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 81EEDA552BD5775D00257C91 /* FirebaseAnalytics */; };
 		81EEDA582BD5775D00257C91 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 81EEDA572BD5775D00257C91 /* FirebaseAnalyticsSwift */; };
 		81EEDA5A2BD5775D00257C91 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 81EEDA592BD5775D00257C91 /* FirebaseAuth */; };
@@ -25,17 +26,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersRepository.swift; sourceTree = "<group>"; };
+		812F4E5B2BD5AFB600C4FABE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakeItSo-ReminderClone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItSo_ReminderCloneApp.swift; sourceTree = "<group>"; };
-		81603FF32BD49BEB00B47785 /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		81603FF32BD49BEB00B47785 /* RemindersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersList.swift; sourceTree = "<group>"; };
 		81603FF72BD49BED00B47785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81603FFA2BD49BED00B47785 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		816040012BD49C7900B47785 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		81EEDA442BD4B05D00257C91 /* AddReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderView.swift; sourceTree = "<group>"; };
 		81EEDA4B2BD4CB1A00257C91 /* ReminderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListViewModel.swift; sourceTree = "<group>"; };
-		81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListRowView.swift; sourceTree = "<group>"; };
+		81EEDA4D2BD4D27200257C91 /* RemindersListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListRowView.swift; sourceTree = "<group>"; };
 		81EEDA502BD4D7A300257C91 /* ReminderToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderToggleStyle.swift; sourceTree = "<group>"; };
-		81EEDA522BD574BF00257C91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		812F4E562BD59AC700C4FABE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		81603FE52BD49BEB00B47785 = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +86,7 @@
 				81EEDA462BD4C91D00257C91 /* Features */,
 				81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */,
 				81603FF72BD49BED00B47785 /* Assets.xcassets */,
-				81EEDA522BD574BF00257C91 /* GoogleService-Info.plist */,
+				812F4E5B2BD5AFB600C4FABE /* GoogleService-Info.plist */,
 				81603FF92BD49BED00B47785 /* Preview Content */,
 			);
 			path = "MakeItSo-ReminderClone";
@@ -101,6 +111,7 @@
 		81EEDA472BD4C92F00257C91 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				812F4E562BD59AC700C4FABE /* Repositories */,
 				81EEDA482BD4C94300257C91 /* Models */,
 				81EEDA492BD4C94B00257C91 /* ViewModels */,
 				81EEDA4A2BD4C95400257C91 /* Views */,
@@ -128,9 +139,9 @@
 		81EEDA4A2BD4C95400257C91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				81603FF32BD49BEB00B47785 /* ReminderList.swift */,
+				81603FF32BD49BEB00B47785 /* RemindersList.swift */,
 				81EEDA442BD4B05D00257C91 /* AddReminderView.swift */,
-				81EEDA4D2BD4D27200257C91 /* ReminderListRowView.swift */,
+				81EEDA4D2BD4D27200257C91 /* RemindersListRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,8 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81603FFB2BD49BED00B47785 /* Preview Assets.xcassets in Resources */,
-				81EEDA532BD574BF00257C91 /* GoogleService-Info.plist in Resources */,
 				81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */,
+				812F4E5C2BD5AFB600C4FABE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,10 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81EEDA512BD4D7A300257C91 /* ReminderToggleStyle.swift in Sources */,
-				81603FF42BD49BEB00B47785 /* ReminderList.swift in Sources */,
+				81603FF42BD49BEB00B47785 /* RemindersList.swift in Sources */,
 				81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */,
 				81EEDA4C2BD4CB1A00257C91 /* ReminderListViewModel.swift in Sources */,
-				81EEDA4E2BD4D27200257C91 /* ReminderListRowView.swift in Sources */,
+				81EEDA4E2BD4D27200257C91 /* RemindersListRowView.swift in Sources */,
+				812F4E582BD59B1F00C4FABE /* RemindersRepository.swift in Sources */,
 				81EEDA452BD4B05D00257C91 /* AddReminderView.swift in Sources */,
 				816040022BD49C7A00B47785 /* Reminder.swift in Sources */,
 			);
@@ -377,6 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "example.MakeItSo-ReminderClone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -406,6 +419,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "example.MakeItSo-ReminderClone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

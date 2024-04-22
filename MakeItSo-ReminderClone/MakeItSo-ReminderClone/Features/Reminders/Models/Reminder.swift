@@ -5,10 +5,13 @@
 //  Created by Ashraful Islam on 4/20/24.
 //
 
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Foundation
 
-struct Reminder: Identifiable {
-    let id = UUID()
+struct Reminder: Identifiable, Codable {
+
+    @DocumentID var id: String?
     var title: String
     var isCompleted = false
 }
