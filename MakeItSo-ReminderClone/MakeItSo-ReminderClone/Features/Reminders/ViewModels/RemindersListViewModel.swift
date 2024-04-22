@@ -5,14 +5,18 @@
 //  Created by Ashraful Islam on 4/20/24.
 //
 
+import Combine
 import Foundation
 
-@Observable
-class ReminderListViewModel {
-    var reminders = Reminder.samples
-    var errorMessage: String?
+class RemindersListViewModel: ObservableObject {
+    @Published var reminders = [Reminder]()
+    @Published var errorMessage: String?
 
     private var remindersRepository = RemindersRepository()
+
+    init() {
+        remindersRepository.$reminders.assign(to: &$reminders)
+    }
 
     func addReminder(_ reminder: Reminder) {
         do {

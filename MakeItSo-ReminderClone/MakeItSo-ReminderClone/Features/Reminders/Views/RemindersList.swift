@@ -10,11 +10,10 @@ import SwiftUI
 
 struct RemindersList: View {
 
-    @Environment(ReminderListViewModel.self) private var viewModel
+    @EnvironmentObject private var viewModel: RemindersListViewModel
     @State private var isAddReminderDialogPresented = false
 
     var body: some View {
-        @Bindable var viewModel = viewModel
 
         List($viewModel.reminders) { $reminder in
             RemindersListRowView(reminder: $reminder)
@@ -48,7 +47,7 @@ struct RemindersList: View {
 #Preview {
     NavigationStack {
         RemindersList()
-            .environment(ReminderListViewModel())
+            .environmentObject(RemindersListViewModel())
             .navigationTitle("Reminders")
     }
 }

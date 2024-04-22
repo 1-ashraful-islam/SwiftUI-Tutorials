@@ -45,7 +45,7 @@ struct MakeItSo_ReminderCloneApp: App {
     var body: some Scene {
         WindowGroup {
             RemindersList()
-                .environment(ReminderListViewModel())
+                .environmentObject(RemindersListViewModel())
         }
     }
 }
