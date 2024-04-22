@@ -8,15 +8,23 @@
 import SwiftData
 import SwiftUI
 
-struct RemindersList: View {
+struct RemindersListView: View {
 
     @EnvironmentObject private var viewModel: RemindersListViewModel
     @State private var isAddReminderDialogPresented = false
+
+    @State private var editableReminder: Reminder? = nil
 
     var body: some View {
 
         List($viewModel.reminders) { $reminder in
             RemindersListRowView(reminder: $reminder)
+                .onChange(of: reminder.isCompleted) { newValue in
+                    viewModel.setCompleted(reminder, isCompleted: newValue)
+                }
+                .onTapGesture {
+                    editableReminder = reminder
+                }
         }
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
@@ -31,8 +39,13 @@ struct RemindersList: View {
             }
         }
         .sheet(isPresented: $isAddReminderDialogPresented) {
-            AddReminderView { reminder in
+            EditReminderDetailsView { reminder in
                 viewModel.addReminder(reminder)
+            }
+        }
+        .sheet(item: $editableReminder) { reminder in
+            EditReminderDetailsView(mode: .edit, reminder: reminder) { reminder in
+                viewModel.updateReminder(reminder)
             }
         }
         .tint(.red)
@@ -46,7 +59,7 @@ struct RemindersList: View {
 
 #Preview {
     NavigationStack {
-        RemindersList()
+        RemindersListView()
             .environmentObject(RemindersListViewModel())
             .navigationTitle("Reminders")
     }

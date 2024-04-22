@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddReminderView: View {
+struct EditReminderDetailsView: View {
 
     enum FocusableField: Hashable {
         case title
@@ -16,26 +16,34 @@ struct AddReminderView: View {
     @FocusState
     private var focusedField: FocusableField?
 
-    @State private var reminder = Reminder(title: "")
+    enum Mode {
+        case add
+        case edit
+    }
+
+    var mode: Mode = .add
+
+    @State var reminder = Reminder(title: "")
 
     @Environment(\.dismiss) private var dismiss
 
-    var onCommit: (_ reminder: Reminder) -> Void
+    let onCommit: (_ reminder: Reminder) -> Void
 
     var body: some View {
         NavigationStack {
             Form {
                 TextField("Title", text: $reminder.title)
                     .focused($focusedField, equals: .title)
+                    .onSubmit(commit)
             }
-            .navigationTitle("New Reminder")
+            .navigationTitle(mode == .add ? "New Reminder" : "Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", action: cancelDialog)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Add", action: commit)
+                    Button(mode == .add ? "Add" : "Done", action: commit)
                         .disabled(reminder.title.isEmpty)
                 }
             }
@@ -55,8 +63,23 @@ struct AddReminderView: View {
     }
 }
 
-#Preview {
-    AddReminderView { reminder in
+#Preview("Edit Reminder") {
+    struct Container: View {
+        @State var reminder = Reminder.samples[0]
+
+        var body: some View {
+            EditReminderDetailsView(mode: .edit, reminder: reminder) { reminder in
+                print("You edited reminder: \(reminder.title)")
+            }
+        }
+    }
+
+    return Container()
+}
+
+#Preview("Add Reminder") {
+
+    EditReminderDetailsView { reminder in
         print("Added a new reminder: \(reminder.title)")
     }
 }

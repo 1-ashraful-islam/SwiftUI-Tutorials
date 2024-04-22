@@ -17,7 +17,10 @@ struct RemindersListRowView: View {
                 .toggleStyle(.reminder)
 
             Text(reminder.title)
+
+            Spacer()
         }
+        .contentShape(Rectangle())
     }
 }
 

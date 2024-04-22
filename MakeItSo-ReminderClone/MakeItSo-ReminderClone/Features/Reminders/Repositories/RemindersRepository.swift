@@ -12,6 +12,8 @@ import Foundation
 class RemindersRepository: ObservableObject {
     @Published var reminders = [Reminder]()
 
+    private var remindersCollection = Firestore.firestore().collection(Reminder.collectionName)
+
     private var listenerRegistration: ListenerRegistration?
 
     init() {
@@ -24,10 +26,9 @@ class RemindersRepository: ObservableObject {
 
     func subscribe() {
         if listenerRegistration == nil {
-            let query = Firestore.firestore().collection("reminders")
 
             listenerRegistration =
-                query
+                remindersCollection
                 .addSnapshotListener { [weak self] (querySnapshot, error) in
                     guard let documents = querySnapshot?.documents else {
                         print("No documents in Firestore")
@@ -57,10 +58,17 @@ class RemindersRepository: ObservableObject {
     }
 
     func addReminder(_ reminder: Reminder) throws {
-        print(reminder)
-        try Firestore
-            .firestore()
-            .collection("reminders")
-            .addDocument(from: reminder)
+        try remindersCollection.addDocument(from: reminder)
+    }
+
+    func updateReminder(_ reminder: Reminder) throws {
+        guard let documentID = reminder.id else {
+            fatalError("Reminder \(reminder.title) has no document ID")
+        }
+
+        try remindersCollection
+            .document(documentID)
+            .setData(from: reminder, merge: true)
+
     }
 }
