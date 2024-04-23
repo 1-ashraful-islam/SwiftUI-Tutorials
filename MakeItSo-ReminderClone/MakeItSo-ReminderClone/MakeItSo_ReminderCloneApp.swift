@@ -28,8 +28,11 @@ struct MakeItSo_ReminderCloneApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RemindersListView()
-                .environmentObject(RemindersListViewModel())
+            NavigationStack {
+                RemindersListView()
+                    .environmentObject(RemindersListViewModel())
+                    .navigationTitle("Reminders")
+            }
         }
     }
 }

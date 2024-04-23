@@ -12,6 +12,7 @@ struct RemindersListView: View {
 
     @EnvironmentObject private var viewModel: RemindersListViewModel
     @State private var isAddReminderDialogPresented = false
+    @State private var isSettingsScreenPresented = false
 
     @State private var editableReminder: Reminder? = nil
 
@@ -48,6 +49,9 @@ struct RemindersListView: View {
                 Spacer()
 
             }
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Settings", systemImage: "gearshape", action: presentSettingsScreen)
+            }
         }
         .sheet(isPresented: $isAddReminderDialogPresented) {
             EditReminderDetailsView { reminder in
@@ -59,11 +63,18 @@ struct RemindersListView: View {
                 viewModel.updateReminder(reminder)
             }
         }
+        .sheet(isPresented: $isSettingsScreenPresented) {
+            SettingsView()
+        }
         .tint(.red)
     }
 
     private func presentAddReminderView() {
         isAddReminderDialogPresented.toggle()
+    }
+
+    private func presentSettingsScreen() {
+        isSettingsScreenPresented.toggle()
     }
 
 }
