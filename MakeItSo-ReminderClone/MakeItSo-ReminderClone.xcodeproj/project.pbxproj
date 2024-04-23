@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		812F4E582BD59B1F00C4FABE /* RemindersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */; };
 		812F4E5C2BD5AFB600C4FABE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 812F4E5B2BD5AFB600C4FABE /* GoogleService-Info.plist */; };
+		815137E22BD74184006F7169 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 815137E12BD74184006F7169 /* Factory */; };
+		815137E62BD74224006F7169 /* Firebase+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815137E52BD74224006F7169 /* Firebase+Injection.swift */; };
+		815137E82BD7478A006F7169 /* Repositories+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815137E72BD7478A006F7169 /* Repositories+Injection.swift */; };
 		81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */; };
 		81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* RemindersListView.swift */; };
 		81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FF72BD49BED00B47785 /* Assets.xcassets */; };
@@ -28,6 +31,8 @@
 /* Begin PBXFileReference section */
 		812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersRepository.swift; sourceTree = "<group>"; };
 		812F4E5B2BD5AFB600C4FABE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		815137E52BD74224006F7169 /* Firebase+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Injection.swift"; sourceTree = "<group>"; };
+		815137E72BD7478A006F7169 /* Repositories+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repositories+Injection.swift"; sourceTree = "<group>"; };
 		81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakeItSo-ReminderClone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItSo_ReminderCloneApp.swift; sourceTree = "<group>"; };
 		81603FF32BD49BEB00B47785 /* RemindersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListView.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 				81EEDA5E2BD5775D00257C91 /* FirebaseFirestoreSwift in Frameworks */,
 				81EEDA582BD5775D00257C91 /* FirebaseAnalyticsSwift in Frameworks */,
 				81EEDA5C2BD5775D00257C91 /* FirebaseFirestore in Frameworks */,
+				815137E22BD74184006F7169 /* Factory in Frameworks */,
 				81EEDA5A2BD5775D00257C91 /* FirebaseAuth in Frameworks */,
 				81EEDA562BD5775D00257C91 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -60,8 +66,25 @@
 			isa = PBXGroup;
 			children = (
 				812F4E572BD59B1F00C4FABE /* RemindersRepository.swift */,
+				815137E72BD7478A006F7169 /* Repositories+Injection.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		815137E32BD741E1006F7169 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				815137E42BD741E9006F7169 /* Services */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		815137E42BD741E9006F7169 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				815137E52BD74224006F7169 /* Firebase+Injection.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		81603FE52BD49BEB00B47785 = {
@@ -103,6 +126,7 @@
 		81EEDA462BD4C91D00257C91 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				815137E32BD741E1006F7169 /* Firebase */,
 				81EEDA472BD4C92F00257C91 /* Reminders */,
 			);
 			path = Features;
@@ -176,6 +200,7 @@
 				81EEDA592BD5775D00257C91 /* FirebaseAuth */,
 				81EEDA5B2BD5775D00257C91 /* FirebaseFirestore */,
 				81EEDA5D2BD5775D00257C91 /* FirebaseFirestoreSwift */,
+				815137E12BD74184006F7169 /* Factory */,
 			);
 			productName = "MakeItSo-ReminderClone";
 			productReference = 81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */;
@@ -207,6 +232,7 @@
 			mainGroup = 81603FE52BD49BEB00B47785;
 			packageReferences = (
 				81EEDA542BD5775D00257C91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				815137E02BD74184006F7169 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 81603FEF2BD49BEB00B47785 /* Products */;
 			projectDirPath = "";
@@ -236,9 +262,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81EEDA512BD4D7A300257C91 /* ReminderToggleStyle.swift in Sources */,
+				815137E62BD74224006F7169 /* Firebase+Injection.swift in Sources */,
 				81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */,
 				81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */,
 				81EEDA4C2BD4CB1A00257C91 /* RemindersListViewModel.swift in Sources */,
+				815137E82BD7478A006F7169 /* Repositories+Injection.swift in Sources */,
 				81EEDA4E2BD4D27200257C91 /* RemindersListRowView.swift in Sources */,
 				812F4E582BD59B1F00C4FABE /* RemindersRepository.swift in Sources */,
 				81EEDA452BD4B05D00257C91 /* EditReminderDetailsView.swift in Sources */,
@@ -452,6 +480,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		815137E02BD74184006F7169 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 		81EEDA542BD5775D00257C91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -463,6 +499,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		815137E12BD74184006F7169 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 815137E02BD74184006F7169 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
 		81EEDA552BD5775D00257C91 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 81EEDA542BD5775D00257C91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

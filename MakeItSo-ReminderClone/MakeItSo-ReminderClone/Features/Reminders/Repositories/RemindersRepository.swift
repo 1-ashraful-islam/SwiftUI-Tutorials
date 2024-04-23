@@ -5,14 +5,16 @@
 //  Created by Ashraful Islam on 4/21/24.
 //
 
+import Factory
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
 class RemindersRepository: ObservableObject {
-    @Published var reminders = [Reminder]()
+    //MARK: - Dependencies
+    @Injected(\.firestore) var firestore
 
-    private var remindersCollection = Firestore.firestore().collection(Reminder.collectionName)
+    @Published var reminders = [Reminder]()
 
     private var listenerRegistration: ListenerRegistration?
 
@@ -26,9 +28,10 @@ class RemindersRepository: ObservableObject {
 
     func subscribe() {
         if listenerRegistration == nil {
+            let query = firestore.collection(Reminder.collectionName)
 
             listenerRegistration =
-                remindersCollection
+                query
                 .addSnapshotListener { [weak self] (querySnapshot, error) in
                     guard let documents = querySnapshot?.documents else {
                         print("No documents in Firestore")
@@ -58,7 +61,9 @@ class RemindersRepository: ObservableObject {
     }
 
     func addReminder(_ reminder: Reminder) throws {
-        try remindersCollection.addDocument(from: reminder)
+        try firestore
+            .collection(Reminder.collectionName)
+            .addDocument(from: reminder)
     }
 
     func updateReminder(_ reminder: Reminder) throws {
@@ -66,7 +71,8 @@ class RemindersRepository: ObservableObject {
             fatalError("Reminder \(reminder.title) has no document ID")
         }
 
-        try remindersCollection
+        try firestore
+            .collection(Reminder.collectionName)
             .document(documentID)
             .setData(from: reminder, merge: true)
 
@@ -77,7 +83,8 @@ class RemindersRepository: ObservableObject {
             fatalError("Reminder \(reminder.title) has no document ID")
         }
 
-        remindersCollection
+        firestore
+            .collection(Reminder.collectionName)
             .document(documentID)
             .delete()
     }
