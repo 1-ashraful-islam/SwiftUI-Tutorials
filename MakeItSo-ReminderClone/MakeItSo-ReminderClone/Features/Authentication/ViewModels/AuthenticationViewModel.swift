@@ -106,6 +106,7 @@ extension AuthenticationViewModel {
     }
 
     func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) async -> Bool {
-        return await authenticationService.handleSignInWithAppleCompletion(result)
+        return await authenticationService.handleSignInWithAppleCompletion(
+            withAccountLinking: true, result)
     }
 }

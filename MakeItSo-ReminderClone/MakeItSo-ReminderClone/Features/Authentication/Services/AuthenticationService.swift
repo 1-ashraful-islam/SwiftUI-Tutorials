@@ -73,7 +73,9 @@ extension AuthenticationService {
 
 extension AuthenticationService {
     @MainActor
-    func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) async -> Bool {
+    func handleSignInWithAppleCompletion(
+        withAccountLinking: Bool = false, _ result: Result<ASAuthorization, Error>
+    ) async -> Bool {
         if case .failure(let failure) = result {
             errorMessage = failure.localizedDescription
             return false
@@ -104,7 +106,13 @@ extension AuthenticationService {
                     fullName: appleIDCredential.fullName)
 
                 do {
-                    try await auth.signIn(with: credential)
+                    if withAccountLinking {
+                        let authResult = try await user?.link(with: credential)
+                        self.user = authResult?.user
+
+                    } else {
+                        try await auth.signIn(with: credential)
+                    }
                     return true
                 } catch {
                     print("Error authenticating: \(error.localizedDescription)")
