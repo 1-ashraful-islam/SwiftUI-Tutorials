@@ -20,6 +20,9 @@
 		815137FC2BD76EB4006F7169 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815137FB2BD76EB4006F7169 /* AuthenticationViewModel.swift */; };
 		815137FE2BD7787D006F7169 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815137FD2BD7787D006F7169 /* GoogleSignInButton.swift */; };
 		815138002BD78351006F7169 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815137FF2BD78351006F7169 /* SignupView.swift */; };
+		815138022BD78728006F7169 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138012BD78728006F7169 /* LoginView.swift */; };
+		815138052BD7FC71006F7169 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138042BD7FC71006F7169 /* AuthenticationService.swift */; };
+		815138072BD80085006F7169 /* AuthenticationService+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138062BD80085006F7169 /* AuthenticationService+Injection.swift */; };
 		81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */; };
 		81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* RemindersListView.swift */; };
 		81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FF72BD49BED00B47785 /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		815137FB2BD76EB4006F7169 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		815137FD2BD7787D006F7169 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		815137FF2BD78351006F7169 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		815138012BD78728006F7169 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		815138042BD7FC71006F7169 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		815138062BD80085006F7169 /* AuthenticationService+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationService+Injection.swift"; sourceTree = "<group>"; };
 		81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakeItSo-ReminderClone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItSo_ReminderCloneApp.swift; sourceTree = "<group>"; };
 		81603FF32BD49BEB00B47785 /* RemindersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListView.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 		815137F02BD7604E006F7169 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				815138032BD7FC54006F7169 /* Services */,
 				815137F62BD76493006F7169 /* ViewModels */,
 				815137F12BD76059006F7169 /* Views */,
 			);
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				815137FF2BD78351006F7169 /* SignupView.swift */,
+				815138012BD78728006F7169 /* LoginView.swift */,
 				815137F22BD76068006F7169 /* UserProfileView.swift */,
 				815137F42BD76399006F7169 /* AuthenticationView.swift */,
 				815137FD2BD7787D006F7169 /* GoogleSignInButton.swift */,
@@ -155,6 +163,15 @@
 				815137FB2BD76EB4006F7169 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		815138032BD7FC54006F7169 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				815138042BD7FC71006F7169 /* AuthenticationService.swift */,
+				815138062BD80085006F7169 /* AuthenticationService+Injection.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		81603FE52BD49BEB00B47785 = {
@@ -349,8 +366,11 @@
 				81EEDA452BD4B05D00257C91 /* EditReminderDetailsView.swift in Sources */,
 				815137F52BD76399006F7169 /* AuthenticationView.swift in Sources */,
 				816040022BD49C7A00B47785 /* Reminder.swift in Sources */,
+				815138022BD78728006F7169 /* LoginView.swift in Sources */,
 				815137EA2BD75E26006F7169 /* SettingsView.swift in Sources */,
 				815137EF2BD75F38006F7169 /* SettingsViewModel.swift in Sources */,
+				815138052BD7FC71006F7169 /* AuthenticationService.swift in Sources */,
+				815138072BD80085006F7169 /* AuthenticationService+Injection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

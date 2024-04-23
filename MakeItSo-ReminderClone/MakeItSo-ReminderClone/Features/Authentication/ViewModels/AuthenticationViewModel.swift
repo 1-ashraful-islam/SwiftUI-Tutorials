@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Factory
 import FirebaseAuth
 import FirebaseCore
 import Foundation
@@ -22,6 +23,7 @@ enum AuthenticationFlow {
 }
 
 class AuthenticationViewModel: ObservableObject {
+    @Injected(\.authenticationService) private var authenticationService
 
     @Published var email = ""
     @Published var password = ""
@@ -85,12 +87,12 @@ class AuthenticationViewModel: ObservableObject {
     // MARK: - Account Deletion
 
     func deleteAccount() async -> Bool {
-        fatalError("Not implemented yet")
+        return await authenticationService.deleteAccount()
     }
 
     // MARK: - Signing out
 
     func signOut() {
-        fatalError("Not implemented yet")
+        authenticationService.signOut()
     }
 }

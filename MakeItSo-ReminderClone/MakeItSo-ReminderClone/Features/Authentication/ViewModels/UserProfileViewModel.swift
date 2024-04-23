@@ -6,10 +6,12 @@
 //
 
 import Combine
+import Factory
 import FirebaseAuth
 import Foundation
 
 class UserProfileViewModel: ObservableObject {
+    @Injected(\.authenticationService) private var authenticationService
 
     @Published var autheticationState: AuthenticationState = .unauthenticated
     @Published var errorMessage = ""
@@ -22,6 +24,9 @@ class UserProfileViewModel: ObservableObject {
     @Published var isVerified = false
 
     init() {
+        authenticationService.$user
+            .assign(to: &$user)
+
         $user
             .compactMap { user in
                 user?.isAnonymous
@@ -59,10 +64,10 @@ class UserProfileViewModel: ObservableObject {
     }
 
     func deleteAccount() async -> Bool {
-        fatalError("Not implemented yet")
+        return await authenticationService.deleteAccount()
     }
 
     func signOut() {
-        fatalError("Not implemented yet")
+        authenticationService.signOut()
     }
 }

@@ -6,10 +6,13 @@
 //
 
 import Combine
+import Factory
 import FirebaseAuth
 import Foundation
 
 class SettingsViewModel: ObservableObject {
+    @Injected(\.authenticationService) private var authenticationService
+
     @Published var user: User?
     @Published var displayName = ""
 
@@ -18,6 +21,9 @@ class SettingsViewModel: ObservableObject {
     @Published var loggedInAs = ""
 
     init() {
+        authenticationService.$user
+            .assign(to: &$user)
+
         $user
             .compactMap { user in
                 user?.isAnonymous
@@ -40,6 +46,6 @@ class SettingsViewModel: ObservableObject {
     }
 
     func signOut() {
-        fatalError("Not implemented yet")
+        authenticationService.signOut()
     }
 }

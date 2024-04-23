@@ -5,7 +5,9 @@
 //  Created by Ashraful Islam on 4/21/24.
 //
 
+import Combine
 import Factory
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
@@ -13,12 +15,25 @@ import Foundation
 class RemindersRepository: ObservableObject {
     //MARK: - Dependencies
     @Injected(\.firestore) var firestore
+    @Injected(\.authenticationService) var authenticationService
 
     @Published var reminders = [Reminder]()
 
+    @Published var user: User? = nil
+
     private var listenerRegistration: ListenerRegistration?
+    private var cancellables = Set<AnyCancellable>()
 
     init() {
+        authenticationService.$user
+            .assign(to: &$user)
+
+        $user.sink { user in
+            self.unsubscribe()
+            self.subscribe(user: user)
+        }
+        .store(in: &cancellables)
+
         subscribe()
     }
 
@@ -26,30 +41,32 @@ class RemindersRepository: ObservableObject {
         unsubscribe()
     }
 
-    func subscribe() {
+    func subscribe(user: User? = nil) {
         if listenerRegistration == nil {
-            let query = firestore.collection(Reminder.collectionName)
+            if let localUser = user ?? self.user {
+                let query = firestore.collection(Reminder.collectionName)
+                    .whereField("userId", isEqualTo: localUser.uid)
+                listenerRegistration =
+                    query
+                    .addSnapshotListener { [weak self] (querySnapshot, error) in
+                        guard let documents = querySnapshot?.documents else {
+                            print("No documents in Firestore")
+                            return
+                        }
 
-            listenerRegistration =
-                query
-                .addSnapshotListener { [weak self] (querySnapshot, error) in
-                    guard let documents = querySnapshot?.documents else {
-                        print("No documents in Firestore")
-                        return
-                    }
-
-                    print("Mapping \(documents.count) documents")
-                    self?.reminders = documents.compactMap { queryDocumentSnapshot in
-                        do {
-                            return try queryDocumentSnapshot.data(as: Reminder.self)
-                        } catch {
-                            print(
-                                "Error mapping document with ID: \(queryDocumentSnapshot.documentID): \(error.localizedDescription)"
-                            )
-                            return nil
+                        print("Mapping \(documents.count) documents")
+                        self?.reminders = documents.compactMap { queryDocumentSnapshot in
+                            do {
+                                return try queryDocumentSnapshot.data(as: Reminder.self)
+                            } catch {
+                                print(
+                                    "Error mapping document with ID: \(queryDocumentSnapshot.documentID): \(error.localizedDescription)"
+                                )
+                                return nil
+                            }
                         }
                     }
-                }
+            }
         }
     }
 
@@ -61,9 +78,12 @@ class RemindersRepository: ObservableObject {
     }
 
     func addReminder(_ reminder: Reminder) throws {
+        var mutableReminder = reminder
+        mutableReminder.userId = user?.uid
+
         try firestore
             .collection(Reminder.collectionName)
-            .addDocument(from: reminder)
+            .addDocument(from: mutableReminder)
     }
 
     func updateReminder(_ reminder: Reminder) throws {
