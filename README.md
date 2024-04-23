@@ -5,3 +5,4 @@ This repository is a collection of SwiftUI projects built following the [Apple D
 ## Projects
 
 - [**Landmarks App**![Landmarks App](Landmarks/landmarks-showCase.png)](Landmarks/README.md)
+- [**MakeItSo Reminder App**![MakeItSo App](MakeItSo-ReminderClone/makeItSo-showcase.png)](MakeItSo-ReminderClone/README.md)
