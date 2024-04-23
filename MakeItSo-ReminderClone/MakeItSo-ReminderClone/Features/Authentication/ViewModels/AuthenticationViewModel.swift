@@ -5,6 +5,7 @@
 //  Created by Ashraful Islam on 4/22/24.
 //
 
+import AuthenticationServices
 import Combine
 import Factory
 import FirebaseAuth
@@ -94,5 +95,17 @@ class AuthenticationViewModel: ObservableObject {
 
     func signOut() {
         authenticationService.signOut()
+    }
+}
+
+// MARK: - Sign in with Apple
+
+extension AuthenticationViewModel {
+    func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) {
+        authenticationService.handleSignInWithAppleRequest(request)
+    }
+
+    func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) async -> Bool {
+        return await authenticationService.handleSignInWithAppleCompletion(result)
     }
 }

@@ -23,6 +23,7 @@
 		815138022BD78728006F7169 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138012BD78728006F7169 /* LoginView.swift */; };
 		815138052BD7FC71006F7169 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138042BD7FC71006F7169 /* AuthenticationService.swift */; };
 		815138072BD80085006F7169 /* AuthenticationService+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138062BD80085006F7169 /* AuthenticationService+Injection.swift */; };
+		8151380A2BD847CB006F7169 /* CryptoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138092BD847CB006F7169 /* CryptoUtils.swift */; };
 		81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */; };
 		81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* RemindersListView.swift */; };
 		81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FF72BD49BED00B47785 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		815138012BD78728006F7169 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		815138042BD7FC71006F7169 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		815138062BD80085006F7169 /* AuthenticationService+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationService+Injection.swift"; sourceTree = "<group>"; };
+		815138092BD847CB006F7169 /* CryptoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtils.swift; sourceTree = "<group>"; };
 		81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakeItSo-ReminderClone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItSo_ReminderCloneApp.swift; sourceTree = "<group>"; };
 		81603FF32BD49BEB00B47785 /* RemindersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		815137F02BD7604E006F7169 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				815138082BD847BA006F7169 /* Utilities */,
 				815138032BD7FC54006F7169 /* Services */,
 				815137F62BD76493006F7169 /* ViewModels */,
 				815137F12BD76059006F7169 /* Views */,
@@ -172,6 +175,14 @@
 				815138062BD80085006F7169 /* AuthenticationService+Injection.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		815138082BD847BA006F7169 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				815138092BD847CB006F7169 /* CryptoUtils.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		81603FE52BD49BEB00B47785 = {
@@ -362,6 +373,7 @@
 				815137F32BD76068006F7169 /* UserProfileView.swift in Sources */,
 				815137E82BD7478A006F7169 /* Repositories+Injection.swift in Sources */,
 				81EEDA4E2BD4D27200257C91 /* RemindersListRowView.swift in Sources */,
+				8151380A2BD847CB006F7169 /* CryptoUtils.swift in Sources */,
 				812F4E582BD59B1F00C4FABE /* RemindersRepository.swift in Sources */,
 				81EEDA452BD4B05D00257C91 /* EditReminderDetailsView.swift in Sources */,
 				815137F52BD76399006F7169 /* AuthenticationView.swift in Sources */,
