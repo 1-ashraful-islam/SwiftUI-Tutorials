@@ -115,21 +115,23 @@ struct LoginView: View {
                     .focused($focus, equals: .password)
                     .submitLabel(.go)
                     .onSubmit {
-                        /* Sign in with email and password */
+                        signInWithEmailPassword()
                     }
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 4)
 
-            if !viewModel.errorMessage.isEmpty {
-                VStack {
-                    Text(viewModel.errorMessage)
-                        .foregroundStyle(Color(UIColor.systemRed))
-                }
+            VStack {
+                Text(!viewModel.errorMessage.isEmpty ? viewModel.errorMessage : " ")
+                    .foregroundStyle(Color(UIColor.systemRed))
+                    .padding(.horizontal)
+                    .font(.caption)
+                    .lineLimit(2, reservesSpace: true)
+                    .multilineTextAlignment(.center)
             }
 
-            Button(action: { /* sign up with email and password */  }) {
+            Button(action: signInWithEmailPassword) {
                 if viewModel.authenticationState != .authenticating {
                     Text("Log in")
                         .padding(.vertical, 8)
@@ -141,9 +143,29 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+
             .disabled(!viewModel.isValid)
             .frame(maxWidth: .infinity)
             .buttonStyle(.borderedProminent)
+        }
+    }
+
+    private func signInWithEmailPassword() {
+        if viewModel.isValid {
+            viewModel.authenticationState = .authenticating
+            Task {
+                let result = await viewModel.signInWithEmailPassword()
+
+                DispatchQueue.main.async {
+                    if result {
+                        viewModel.authenticationState = .authenticated
+                        dismiss()
+                    } else {
+                        viewModel.authenticationState = .unauthenticated
+                    }
+                }
+
+            }
         }
     }
 }

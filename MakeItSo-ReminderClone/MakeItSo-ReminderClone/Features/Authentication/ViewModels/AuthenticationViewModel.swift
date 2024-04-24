@@ -52,7 +52,8 @@ class AuthenticationViewModel: ObservableObject {
             .map { flow, email, password, confirmPassword in
                 flow == .login
                     ? !(email.isEmpty || password.isEmpty)
-                    : !(email.isEmpty || password.isEmpty || confirmPassword.isEmpty)
+                    : !(email.isEmpty || password.isEmpty || confirmPassword.isEmpty
+                        || password != confirmPassword)
             }
             .assign(to: &$isValid)
 
@@ -71,6 +72,9 @@ class AuthenticationViewModel: ObservableObject {
                 user?.displayName ?? user?.email ?? ""
             }
             .assign(to: &$displayName)
+
+        authenticationService.$errorMessage
+            .assign(to: &$errorMessage)
     }
 
     func switchFlow() {
@@ -95,6 +99,17 @@ class AuthenticationViewModel: ObservableObject {
 
     func signOut() {
         authenticationService.signOut()
+    }
+}
+
+// MARK: - Sign in with Email and Password
+extension AuthenticationViewModel {
+    func signInWithEmailPassword() async -> Bool {
+        return await authenticationService.signInWithEmailPassword(email, password: password)
+    }
+
+    func signUpWithEmailPassword() async -> Bool {
+        return await authenticationService.signUpWithEmailPassword(email, password: password)
     }
 }
 

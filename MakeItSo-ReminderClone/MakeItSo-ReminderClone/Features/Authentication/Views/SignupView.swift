@@ -114,6 +114,16 @@ struct SignupView: View {
                 Image(systemName: "lock")
                 SecureField("Password", text: $viewModel.password)
                     .focused($focus, equals: .password)
+                    .onChange(of: viewModel.password) {
+                        //basic validation of password
+                        if !viewModel.confirmPassword.isEmpty
+                            && viewModel.password != viewModel.confirmPassword
+                        {
+                            viewModel.errorMessage = "passwords do not match"
+                        } else {
+                            viewModel.errorMessage = ""
+                        }
+                    }
                     .submitLabel(.next)
                     .onSubmit {
                         self.focus = .confirmPassword
@@ -127,23 +137,31 @@ struct SignupView: View {
                 Image(systemName: "lock")
                 SecureField("Confirm password", text: $viewModel.confirmPassword)
                     .focused($focus, equals: .confirmPassword)
+                    .onChange(of: viewModel.confirmPassword) {
+                        //basic validation of password
+                        if viewModel.confirmPassword != viewModel.password {
+                            viewModel.errorMessage = "passwords do not match"
+                        } else {
+                            viewModel.errorMessage = ""
+                        }
+                    }
                     .submitLabel(.go)
                     .onSubmit {
-                        // Sign up with email and password
+                        signUpWithEmailPassword()
                     }
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 4)
 
-            if !viewModel.errorMessage.isEmpty {
-                VStack {
-                    Text(viewModel.errorMessage)
-                        .foregroundStyle(Color(UIColor.systemRed))
-                }
+            VStack {
+                Text(!viewModel.errorMessage.isEmpty ? viewModel.errorMessage : " ")
+                    .foregroundStyle(Color(UIColor.systemRed))
+                    .padding(.horizontal)
+                    .font(.caption)
             }
 
-            Button(action: { /* sign up with email and password */  }) {
+            Button(action: signUpWithEmailPassword) {
                 if viewModel.authenticationState != .authenticating {
                     Text("Sign up")
                         .padding(.vertical, 8)
@@ -158,6 +176,25 @@ struct SignupView: View {
             .disabled(!viewModel.isValid)
             .frame(maxWidth: .infinity)
             .buttonStyle(.borderedProminent)
+        }
+    }
+
+    private func signUpWithEmailPassword() {
+        if viewModel.isValid {
+            viewModel.authenticationState = .authenticating
+            Task {
+                let result = await viewModel.signUpWithEmailPassword()
+
+                DispatchQueue.main.async {
+                    if result {
+                        viewModel.authenticationState = .authenticated
+                        dismiss()
+                    } else {
+                        viewModel.authenticationState = .unauthenticated
+                    }
+                }
+
+            }
         }
     }
 }

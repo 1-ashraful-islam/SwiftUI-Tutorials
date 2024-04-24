@@ -69,6 +69,35 @@ extension AuthenticationService {
     }
 }
 
+// MARK: Sign in with email and password
+extension AuthenticationService {
+
+    @MainActor
+    func signInWithEmailPassword(_ email: String, password: String) async -> Bool {
+        do {
+            try await auth.signIn(withEmail: email, password: password)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            errorMessage = error.localizedDescription
+            return false
+        }
+    }
+
+    @MainActor
+    func signUpWithEmailPassword(_ email: String, password: String) async -> Bool {
+        do {
+            try await auth.createUser(withEmail: email, password: password)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            errorMessage = error.localizedDescription
+            return false
+        }
+    }
+
+}
+
 // MARK: - Sign in with Apple
 
 extension AuthenticationService {
