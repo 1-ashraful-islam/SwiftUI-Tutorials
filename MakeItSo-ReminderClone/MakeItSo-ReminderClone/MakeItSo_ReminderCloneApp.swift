@@ -9,6 +9,7 @@ import Factory
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
+import GoogleSignIn
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -23,6 +24,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         authenticationService.signInAnonymously()
 
         return true
+    }
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+    ) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
     }
 }
 

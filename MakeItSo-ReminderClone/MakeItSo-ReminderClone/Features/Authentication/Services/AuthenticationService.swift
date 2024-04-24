@@ -9,12 +9,21 @@ import AuthenticationServices
 import Factory
 import FirebaseAuth
 import Foundation
+import GoogleSignIn
+import GoogleSignInSwift
+
+enum AuthenticationError: Error {
+    case tokenError(message: String)
+}
 
 public class AuthenticationService {
+    // MARK: - Dependencies
     @Injected(\.auth) private var auth
-    @Published var user: User?
+    @Injected(\.firebaseOptions) private var firebaseOptions
 
+    @Published var user: User?
     @Published var errorMessage = ""
+
     private var currentNonce: String?
 
     private var authStateHandler: AuthStateDidChangeListenerHandle?
@@ -96,6 +105,53 @@ extension AuthenticationService {
         }
     }
 
+}
+
+// MARK: - Sign in with Google
+extension AuthenticationService {
+    @MainActor
+    func signInWithGoogle() async -> Bool {
+        guard let clientID = firebaseOptions.clientID else {
+            fatalError("No client ID found in Firebase configuration")
+        }
+
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        guard
+            let windowScene = UIApplication.shared.connectedScenes
+                .filter({ $0.activationState == .foregroundActive })
+                .first as? UIWindowScene,
+            let window = windowScene.windows
+                .filter({ $0.isKeyWindow })
+                .first,
+            let rootViewController = window.rootViewController
+        else {
+            print("There is no root view controller")
+            return false
+        }
+        do {
+            let userAuthentication = try await GIDSignIn.sharedInstance.signIn(
+                withPresenting: rootViewController)
+            let user = userAuthentication.user
+            guard let idToken = user.idToken else {
+                throw AuthenticationError.tokenError(message: "ID token missing")
+            }
+            let accessToken = user.accessToken
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken.tokenString,
+                accessToken: accessToken.tokenString)
+
+            try await auth.signIn(with: credential)
+
+            return true
+        } catch {
+            errorMessage = error.localizedDescription
+            print(errorMessage)
+            return false
+        }
+
+    }
 }
 
 // MARK: - Sign in with Apple

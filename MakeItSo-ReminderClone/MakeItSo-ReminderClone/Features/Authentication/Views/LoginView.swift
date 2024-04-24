@@ -46,7 +46,11 @@ struct LoginView: View {
             Spacer()
 
             GoogleSignInButton(.signIn) {
-                // sign in with Google
+                Task {
+                    if await viewModel.signInWithGoogle() {
+                        dismiss()
+                    }
+                }
             }
 
             SignInWithAppleButton(.signIn) { request in

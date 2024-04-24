@@ -113,6 +113,13 @@ extension AuthenticationViewModel {
     }
 }
 
+// MARK: - Sign in with Google
+extension AuthenticationViewModel {
+    func signInWithGoogle() async -> Bool {
+        return await authenticationService.signInWithGoogle()
+    }
+}
+
 // MARK: - Sign in with Apple
 
 extension AuthenticationViewModel {

@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum GoogleSignInButtonLabel: String {
-    case signUp = "Sign in with Google"
+    case signUp = "Sign up with Google"
     case `continue` = "Continue with Google"
-    case signIn = "Sign up with Google"
+    case signIn = "Sign in with Google"
 }
 
 struct GoogleSignInButton: View {

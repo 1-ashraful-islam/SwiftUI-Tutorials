@@ -7,6 +7,7 @@
 
 import Factory
 import FirebaseAuth
+import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
@@ -21,6 +22,16 @@ extension Container {
             let value = UserDefaults.standard.bool(forKey: "useEmulator")
             print("Using the Firebase Local Emulator: \(value == true ? "YES" : "NO")")
             return value
+        }.singleton
+    }
+
+    public var firebaseOptions: Factory<FirebaseOptions> {
+        Factory(self) {
+            guard let options = FirebaseApp.app()?.options else {
+                fatalError(
+                    "Using firebase requires GoogleService-Info.plist is included with app bundle")
+            }
+            return options
         }.singleton
     }
 
