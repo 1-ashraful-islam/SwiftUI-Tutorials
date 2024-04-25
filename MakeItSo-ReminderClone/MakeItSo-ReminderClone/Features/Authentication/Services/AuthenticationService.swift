@@ -51,12 +51,20 @@ public class AuthenticationService {
     }
 
     func deleteAccount() async -> Bool {
+        //TODO: - implement Token Re-auth and revocation methods before deleting account
+        //        guard let user = user else { return false }
+        //        guard let lastSignInDate = user.metadata.lastSignInDate else { return false }
+        //        let needsReauth = !lastSignInDate.isWithinPast(minutes: 5)
+        //
+        //        let needsTokenRevocation = user.providerData.contains(where: {$0.providerID == "apple.com"})
+
         do {
             try await user?.delete()
             signOut()
             return true
         } catch {
-            print(error.localizedDescription)
+            errorMessage = error.localizedDescription
+            print(errorMessage)
             return false
         }
     }

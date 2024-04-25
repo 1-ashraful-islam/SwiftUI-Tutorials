@@ -26,6 +26,7 @@
 		8151380A2BD847CB006F7169 /* CryptoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138092BD847CB006F7169 /* CryptoUtils.swift */; };
 		8151380D2BD9601B006F7169 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8151380C2BD9601B006F7169 /* GoogleSignIn */; };
 		8151380F2BD9601B006F7169 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8151380E2BD9601B006F7169 /* GoogleSignInSwift */; };
+		815138152BDAB71C006F7169 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815138142BDAB71C006F7169 /* Date+Extension.swift */; };
 		81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */; };
 		81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81603FF32BD49BEB00B47785 /* RemindersListView.swift */; };
 		81603FF82BD49BED00B47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81603FF72BD49BED00B47785 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		815138062BD80085006F7169 /* AuthenticationService+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationService+Injection.swift"; sourceTree = "<group>"; };
 		815138092BD847CB006F7169 /* CryptoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtils.swift; sourceTree = "<group>"; };
 		815138102BD96061006F7169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		815138142BDAB71C006F7169 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		81603FEE2BD49BEB00B47785 /* MakeItSo-ReminderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakeItSo-ReminderClone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81603FF12BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItSo_ReminderCloneApp.swift; sourceTree = "<group>"; };
 		81603FF32BD49BEB00B47785 /* RemindersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		815138112BDAB5C9006F7169 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				815138142BDAB71C006F7169 /* Date+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		81603FE52BD49BEB00B47785 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +240,7 @@
 		81EEDA462BD4C91D00257C91 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				815138112BDAB5C9006F7169 /* Extensions */,
 				815137F02BD7604E006F7169 /* Authentication */,
 				815137EB2BD75EA5006F7169 /* Settings */,
 				815137E32BD741E1006F7169 /* Firebase */,
@@ -376,6 +387,7 @@
 				815137FC2BD76EB4006F7169 /* AuthenticationViewModel.swift in Sources */,
 				815137F82BD764D1006F7169 /* UserProfileViewModel.swift in Sources */,
 				815137FE2BD7787D006F7169 /* GoogleSignInButton.swift in Sources */,
+				815138152BDAB71C006F7169 /* Date+Extension.swift in Sources */,
 				81603FF42BD49BEB00B47785 /* RemindersListView.swift in Sources */,
 				81603FF22BD49BEB00B47785 /* MakeItSo_ReminderCloneApp.swift in Sources */,
 				81EEDA4C2BD4CB1A00257C91 /* RemindersListViewModel.swift in Sources */,
