@@ -50,7 +50,7 @@ struct ScrumDetailEditView: View {
                 }
             }
         }
-        
+
     }
 }
 
