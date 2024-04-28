@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct ScrumHistory: Identifiable {
-    let id = UUID()
+struct ScrumHistory: Identifiable, Codable {
+    let id: UUID
     let date: Date
     var attendees: [DailyScrum.Attendee]
 
-    init(date: Date = Date(), attendees: [DailyScrum.Attendee]) {
+    init(id: UUID = UUID(), date: Date = Date(), attendees: [DailyScrum.Attendee]) {
+        self.id = id
         self.date = date
         self.attendees = attendees
     }
